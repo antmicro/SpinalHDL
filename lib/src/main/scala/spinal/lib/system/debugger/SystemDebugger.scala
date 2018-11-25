@@ -64,7 +64,7 @@ class JtagBridge(c: SystemDebuggerConfig) extends Component{
   }
 
   val jtag = ClockDomain(io.jtag.tck)(new Area{
-    val tap = new JtagTap(io.jtag, 4)
+    val tap = new JtagTap(io.jtag, 6)
     val idcodeArea = tap.idcode(B"x10001FFF")(1)
     val writeArea = tap.flowFragmentPush(system.cmd,JtagBridge.this.clockDomain)(2)
     val readArea = tap.read(system.rsp)(3)
